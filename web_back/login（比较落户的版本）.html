@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大事件-后台登录页</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+
+<body>
+    <div class="main_wrap">
+        <div class="header">
+            <a href="#" class="logo"><img src="images/logo.png" alt=""></a>
+            <div class="copyright">CopyRight © 2019 深圳百秀信息技术股份有限公司<br>All Rights Reserved</div>
+        </div>
+
+        <div class="login_form_con">
+            <div class="login_title"></div>
+            <form class="login_form">
+                <i class="iconfont icon-user"></i>
+                <i class="iconfont icon-key"></i>
+                <input type="text" id="username" class="input_txt" placeholder="邮箱/手机号">
+                <input type="password" id="password" class="input_pass" placeholder="密码">
+                <input id="btnlogin" type="button" class="input_sub" value="登 录">
+            </form>
+        </div>
+        <script src="./js/jquery-1.12.4.min.js"></script>
+        <script>
+           
+           
+           //版本2
+            //用户登录
+            // 思路：添加点击事件
+            // 收集用户信息，简单判断
+            // 请求ajax接口，根据接口的反馈做后续的动作
+
+            $('#btnlogin').click(function () {
+                /*--------------------第一步测试事件又没有触发---------------*/
+                //alert(1);
+                //因为当点击时间，其会自带默认的行为，因此将其类型改成button，阻止默认行为
+                var name = $("#username").val().trim();
+                var password = $("#password").val().trim();
+                // console.log(name + password);
+                if (name.length === 0 || password.length === 0) {
+                    alert("用户名和密码不能为空!");
+                    return;
+                }
+
+                /*-------------------------发请求-------------------------------*/
+                //$.post(url,数据).then(回调)
+                $.post('http://192.168.172.44:8000/admin/login', {
+                    'user_name': name,
+                    'password': password
+                }).then(function (res) {
+                    if (res.code === 200) {
+                        alert("登录成功");
+                    }
+                    else {
+                        alert(res.msg);
+                    }
+                })
+                console.log(name, password)
+
+            })
+
+
+
+            //传统写法 (版本1)
+            /* 
+            $('#btnlogin').click(function () {
+                //--------------------第一步测试事件又没有触发---------------
+                //alert(1);
+                //因为当点击时间，其会自带默认的行为，因此将其类型改成button，阻止默认行为
+                var name = $("#username").val().trim();
+                var password = $("#password").val().trim();
+                // console.log(name + password);
+                if (name.length === 0 || password.length === 0) {
+                    alert("用户名和密码不能为空!");
+                    return;
+                }
+
+                //-------------------------发请求-------------------------------
+
+                $.ajax({
+                    url: 'http://192.168.172.44:8000/admin/login',
+                    type: 'post',
+                    data: {
+                        'user_name': name,
+                        'password': password
+                    },
+                    success: function (res) {
+                        console.log(res);
+                    }
+                })
+
+            })*/
+
+
+        </script>
+
+    </div>
+</body>
+
+</html>
