@@ -1,8 +1,6 @@
 //把所有与文章相关的操作写在这里
 let article = {
-    get: function () {
-        return $.get(APILIST.article_get)
-    },
+    get: () => $.get(APILIST.article_get),
     // add: function (name, slug) {
     //     return $.post(APILIST.category_add, { 'name': name, 'slug': slug })
     // },

@@ -35,13 +35,22 @@ let user = {
    //     console.log(name, password)
 
    // },
+
+   /*
+   //原来
    login: function (name, password) {
       return $.post(APILIST.user_login, {
          'user_name': name,
          'password': password
       })
 
-   },
+   },*/
+
+   login: (name, password) => $.post(APILIST.user_login, {
+      'user_name': name,
+      password
+   }),
+
    //用户退出
    // logout: function () {
    //     $.post(APILIST.user_logout).then(function (res) {
@@ -55,13 +64,16 @@ let user = {
 
    //     })
    // },
-   logout: function () {
+   /*logout: function () {
       return $.post(APILIST.user_logout)
-   },
+   },*/
+
+   logout: () => $.post(APILIST.user_logout),
    //获取信息
-   getInfo: function () {
+   /*getInfo: function () {
       return $.get(APILIST.user_getInfo)
-   }
+   }*/
+   getInfo: () => $.get(APILIST.user_getInfo)
    // getInfo: function () {
    //     $.get(APILIST.user_getInfo).then(function (res) {
    //         console.log(res);
@@ -72,4 +84,9 @@ let user = {
 
    //     });
    // }
+
+
+
+
+
 }
