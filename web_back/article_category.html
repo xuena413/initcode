@@ -134,7 +134,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="model_shutoff">关闭</button>
+                    <button type="button" class="btn btn-default" id="model_shutoff1">关闭</button>
                     <button type="button" class="btn btn-primary" id="model_save">保存</button>
                 </div>
             </div>
@@ -252,6 +252,7 @@
 
         //关闭时间隐藏模态框
         $("#model_shutoff").click(function () {
+            console.log(1);
             $('#addModal').modal('hide');
         })
 
@@ -318,6 +319,11 @@
 
         })
 
+        //关闭时间隐藏模态框
+        $("#model_shutoff1").click(function () {
+            console.log(1);
+            $('#editModal').modal('hide');
+        })
 
 
 
