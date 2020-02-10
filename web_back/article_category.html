@@ -230,7 +230,8 @@
             category.add(name, slug).then(function (res) {
                 //console.log(res);
                 //添加成功
-                if (res.code === 200) {
+                let { code, msg } = res;//解构函数的书写
+                if (code === 200) {
                     //添加成功
                     //（1）清空用户的输入
                     $("#name").val('');
@@ -244,7 +245,7 @@
 
 
                 } else {
-                    alert(res.msg);
+                    alert(msg);
                 }
 
             })
@@ -269,12 +270,13 @@
             var id = $(this).attr('data-id');  //在生成按钮时间，要先设置自定义属性，然后再在这里拿到id
             category.del(id).then(function (res) {
                 //console.log(res);
-                if (res.code === 200) {
+                let { code, msg } = res;//解构函数的书写
+                if (code === 200) {
                     //删除成功，重新获取数据
 
                     getAndShow();
                 } else {
-                    alert(res.msg);
+                    alert(msg);
                 }
             })
 
@@ -309,11 +311,12 @@
             }
             // console.log(id, new_name, new_slug);
             category.edit(id, new_slug, new_name).then(function (res) {
-                if (res.code === 200) {
+                let { code, msg } = res;//解构函数的书写
+                if (code === 200) {
                     $('#editModal').modal('hide');
                     getAndShow();
                 } else {
-                    alert(res.msg);
+                    alert(msg);
                 }
             });
 

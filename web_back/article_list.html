@@ -150,12 +150,13 @@
         //-------------------------------------2.获取文章列表+显示在表格
         //策略：调用接口-》获取数据-》用工具（arttemplate）进行渲染
         article.get().then(function (res) {
-            console.log(res);
-            if (res.code === 200) {
+            // console.log(res);
+            let { code, msg } = res;//解构函数的书写
+            if (code === 200) {
                 var htmlstr = template('tmp_table', res);
                 $("#tbody").html(htmlstr);
             } else {
-                alert(res.msg);
+                alert(msg);
             }
         })
     </script>

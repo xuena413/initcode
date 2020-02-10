@@ -73,12 +73,13 @@
 
                 //执行用户登录
                 user.login(name, password).then(function (res) {
-                    if (res.code === 200) {
+                    let { code, msg } = res;//解构函数的书写
+                    if (code === 200) {
                         //alert("登录成功");
                         window.location.href = "./index.html";
                     }
                     else {
-                        alert(res.msg);
+                        alert(msg);
                     }
                 })
                 console.log(name, password);
