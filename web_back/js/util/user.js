@@ -18,7 +18,7 @@
 // }
 
 
-var user = {
+let user = {
    // login: function (name, password) {
    //     $.post(APILIST.user_login, {
    //         'user_name': name,

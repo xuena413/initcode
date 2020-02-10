@@ -1,9 +1,9 @@
 //配置文件
 //把项目用到的接口全用在这里
 
-var BASEURL = 'http://localhost:8000'
+const BASEURL = 'http://localhost:8000'
 //var BASEURL = 'http://192.168.0.107:8000'
-var APILIST = {
+const APILIST = {
     user_login: BASEURL + '/admin/login',
     user_logout: BASEURL + '/admin/logout',
     user_getInfo: BASEURL + '/admin/getuser',

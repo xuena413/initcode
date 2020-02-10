@@ -1,4 +1,4 @@
-var category = {
+let category = {
     get: function () {
         return $.get(APILIST.category_get)
     },
