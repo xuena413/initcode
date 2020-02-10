@@ -14,4 +14,8 @@ var APILIST = {
     category_add: BASEURL + '/admin/category_add',
     category_del: BASEURL + '/admin/category_delete',
     category_edit: BASEURL + '/admin/category_edit',
+
+    article_get: BASEURL + '/admin/search',
+
+
 }

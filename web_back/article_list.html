@@ -53,11 +53,11 @@
                         <th class="text-center" width="100">操作</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbody">
 
 
 
-                    <tr>
+                    <!-- <tr>
 
                         <td>王积千造统最头</td>
                         <td>杰克</td>
@@ -72,7 +72,7 @@
                             <a href="article_edit.html" class="btn btn-default btn-xs">编辑</a>
                             <a href="javascript:deleteTr( 1005 );" class="btn btn-danger btn-xs">删除</a>
                         </td>
-                    </tr>
+                    </tr> -->
 
 
 
@@ -104,23 +104,61 @@
             window.parent.setMenu(1, 1);
         })
     </script>
+    <!-- 文章的类别 -->
     <script id="tmp_category" type="text/html">
         <option>所有分类</option>
      {{each data item}}
        <option>{{item.name}}</option>
      {{/each}}
     </script>
+    <!-- 文章列表 -->
+    <script id="tmp_table" type="text/html">
+        {{each data item}}
+        <tr>
+
+            <td>{{item.title}}</td>
+            <td>{{item.author}}</td>
+            <td>{{item.type}}</td>
+            <td class="text-center">{{item.date}}</td>
+
+
+            <td class="text-center">{{item.state}}</td>
+
+
+            <td class="text-center">
+                <a href="article_edit.html" class="btn btn-default btn-xs">编辑</a>
+                <a href="javascript:deleteTr( 1005 );" class="btn btn-danger btn-xs">删除</a>
+            </td>
+        </tr>
+       {{/each}}
+    </script>
     <script src="./js/util/config.js"></script>
     <script src="./js/util/category.js"></script>
+    <script src="./js/util/article.js"></script>
     <script src="./js/template-web.js"></script>
+    <script src="./js/"></script>
     <script>
-        //1.获取所有的文章类别信息，并显示在下拉列表中
-        //策略：调用接口-》获取数据-》用工具进行渲染
+        //-----------------------------------1.获取所有的文章类别信息，并显示在下拉列表中
+        //策略：调用接口-》获取数据-》用工具（arttemplate）进行渲染
         category.get().then(function (res) {
             //console.log(res); 
             var htmlstr = template("tmp_category", res);
-            console.log(htmlstr);
+            // console.log(htmlstr);
             $('#selCategory').html(htmlstr);
+        })
+
+        //-------------------------------------2.获取文章列表+显示在表格
+        //策略：调用接口-》获取数据-》用工具（arttemplate）进行渲染
+        article.get().then(function (res) {
+            console.log(res);
+            if (res.code === 200) {
+                var htmlstr = template('tmp_table', res);
+                $("#tbody").html(htmlstr);
+            } else {
+                alert(res.msg);
+            }
+
+
         })
     </script>
 </body>
